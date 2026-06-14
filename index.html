@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SAFE SPACE – Media Pembelajaran Kekerasan</title>
+  <meta name="description" content="Media pembelajaran interaktif tentang kekerasan dan cara mencegahnya. Yuk jadikan lingkungan kita aman!"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ======================== NAV ======================== -->
+<nav>
+  <div class="nav-logo">
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+      <circle cx="14" cy="14" r="14" fill="url(#lg1)"/>
+      <path d="M14 7L7 11v5c0 4.1 3 7.9 7 9 4-1.1 7-4.9 7-9v-5L14 7z" fill="white" opacity="0.9"/>
+      <path d="M11 14l2 2 4-4" stroke="#3B82F6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <defs><linearGradient id="lg1" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#3B82F6"/><stop offset="1" stop-color="#14B8A6"/></linearGradient></defs>
+    </svg>
+    SAFE SPACE
+  </div>
+  <div class="nav-steps" id="nav-dots">
+    <div class="nav-dot" title="Beranda"></div>
+    <div class="nav-dot" title="Definisi"></div>
+    <div class="nav-dot" title="Bentuk Kekerasan"></div>
+    <div class="nav-dot" title="Simulasi"></div>
+    <div class="nav-dot" title="Dampak"></div>
+    <div class="nav-dot" title="Cara Mencegah"></div>
+    <div class="nav-dot" title="Teman Butuh Bantuan"></div>
+    <div class="nav-dot" title="Penutup"></div>
+  </div>
+</nav>
+
+<!-- ======================== MODAL ======================== -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-box">
+    <button class="modal-close" id="modal-close">✕</button>
+    <div class="modal-icon" id="modal-icon">👊</div>
+    <h3 id="modal-title">Kekerasan Fisik</h3>
+    <p id="modal-desc"></p>
+    <ul id="modal-examples" style="margin-top:14px;padding-left:20px;"></ul>
+  </div>
+</div>
+
+<!-- ======================== TOAST ======================== -->
+<div class="toast" id="toast"></div>
+
+<!-- ==================== HALAMAN 1: BERANDA ==================== -->
+<section id="page1">
+  <div class="hero">
+    <div class="hero-badge">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="#3B82F6" opacity="0.3"/><circle cx="7" cy="7" r="3.5" fill="#3B82F6"/></svg>
+      Media Pembelajaran Interaktif
+    </div>
+    <h1>Kenali, Cegah, dan<br/><span>Lawan Kekerasan</span></h1>
+    <p>Sebuah perjalanan belajar interaktif untuk memahami kekerasan, dampaknya, dan bagaimana kita bisa menciptakan lingkungan yang <strong>aman dan nyaman</strong> untuk semua.</p>
+
+    <div class="hero-illustration">
+      <svg viewBox="0 0 280 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background circles -->
+        <circle cx="140" cy="100" r="90" fill="url(#heroGrad)" opacity="0.08"/>
+        <circle cx="140" cy="100" r="65" fill="url(#heroGrad)" opacity="0.07"/>
+        <!-- Shield -->
+        <path d="M140 30L90 55v40c0 35 22 67 50 78 28-11 50-43 50-78V55L140 30z" fill="url(#shieldGrad)" opacity="0.9"/>
+        <path d="M125 98l10 10 20-20" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- People -->
+        <circle cx="70" cy="145" r="14" fill="#BFDBFE"/>
+        <rect x="60" y="162" width="20" height="26" rx="6" fill="#93C5FD"/>
+        <circle cx="210" cy="145" r="14" fill="#BBF7D0"/>
+        <rect x="200" y="162" width="20" height="26" rx="6" fill="#86EFAC"/>
+        <!-- Hearts -->
+        <path d="M50 120 C50 116, 55 112, 60 116 C65 112, 70 116, 70 120 C70 128, 60 134, 60 134 C60 134, 50 128, 50 120Z" fill="#FCA5A5" opacity="0.6"/>
+        <path d="M210 120 C210 116, 215 112, 220 116 C225 112, 230 116, 230 120 C230 128, 220 134, 220 134 C220 134, 210 128, 210 120Z" fill="#A7F3D0" opacity="0.6"/>
+        <defs>
+          <linearGradient id="heroGrad" x1="50" y1="10" x2="230" y2="190"><stop stop-color="#3B82F6"/><stop offset="1" stop-color="#14B8A6"/></linearGradient>
+          <linearGradient id="shieldGrad" x1="90" y1="30" x2="190" y2="168"><stop stop-color="#3B82F6"/><stop offset="1" stop-color="#14B8A6"/></linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <button class="btn btn-primary" id="btn-start">Mulai Eksplorasi →</button>
+    <div id="welcome-msg">🌟 Selamat datang! Bersiap memulai perjalananmu... ✨</div>
+  </div>
+</section>
+
+<!-- ==================== HALAMAN 2: DEFINISI ==================== -->
+<section id="page2">
+  <div class="page-container">
+    <div class="page-header">
+      <div class="badge">Halaman 1 dari 7</div>
+      <h2>Apa Itu Kekerasan?</h2>
+      <p>Hover atau klik kartu untuk membaliknya dan menemukan definisi.</p>
+    </div>
+
+    <div class="flip-card-wrapper" id="flip-card">
+      <div class="flip-card">
+        <div class="flip-front">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none" style="margin-bottom:16px"><circle cx="30" cy="30" r="30" fill="white" opacity="0.2"/><path d="M30 15L15 23v12c0 11 7 21 15 24 8-3 15-13 15-24V23L30 15z" fill="white"/></svg>
+          <h3>Apa yang Kamu Tahu Tentang Kekerasan?</h3>
+          <p>Banyak orang salah paham tentang apa yang termasuk kekerasan.<br/><br/>Klik atau hover kartu ini untuk menemukan definisi yang sesungguhnya! 🔄</p>
+        </div>
+        <div class="flip-back">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style="margin-bottom:14px"><circle cx="24" cy="24" r="24" fill="#DBEAFE"/><path d="M24 12L12 18v9c0 8.3 5.3 16 12 18.3C31 42.9 36 35.3 36 27v-9L24 12z" fill="#3B82F6" opacity="0.8"/><path d="M19 24l3.5 3.5L29 21" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Definisi Kekerasan</h3>
+          <p>Kekerasan adalah <strong>setiap tindakan yang disengaja</strong> yang menyebabkan atau berpotensi menyebabkan <strong>kerugian fisik, seksual, psikologis, atau ekonomi</strong> terhadap seseorang, baik di ranah publik maupun privat.<br/><br/><em>– WHO (World Health Organization)</em></p>
+        </div>
+      </div>
+    </div>
+    <p class="flip-hint">💡 Hover atau klik kartu untuk membaliknya</p>
+
+    <div style="text-align:center;margin-top:36px;">
+      <button class="btn btn-primary" id="btn-to-page3">Pelajari Bentuk Kekerasan →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== HALAMAN 3: BENTUK KEKERASAN ==================== -->
+<section id="page3">
+  <div class="page-container">
+    <div class="page-header">
+      <div class="badge">Halaman 2 dari 7</div>
+      <h2>5 Bentuk Kekerasan</h2>
+      <p>Klik setiap kartu untuk mempelajari lebih lanjut. Kamu harus membuka semua kartu untuk melanjutkan.</p>
+    </div>
+
+    <div class="cards-grid" id="violence-cards"></div>
+
+    <div class="progress-bar-wrap">
+      <div class="progress-bar" id="violence-progress" style="width:0%"></div>
+    </div>
+    <p class="progress-text" id="violence-progress-text">0 dari 5 bentuk kekerasan dipelajari</p>
+
+    <div style="text-align:center;">
+      <button class="btn btn-primary" id="btn-to-page4" disabled>Lanjut ke Simulasi →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== HALAMAN 4: SIMULASI CHAT ==================== -->
+<section id="page4">
+  <div class="page-container">
+    <div class="page-header">
+      <div class="badge">Halaman 3 dari 7</div>
+      <h2>Simulasi "Pilih Jalanmu"</h2>
+      <p>Temanmu membutuhkan bantuan. Bagaimana kamu akan merespons?</p>
+    </div>
+
+    <div class="phone-mockup" id="phone-mockup">
+      <div class="phone-top">
+        <div class="contact-avatar">A</div>
+        <div>
+          <div class="contact-name">Andi (Teman Sekelasmu)</div>
+          <div class="contact-status">● Online</div>
+        </div>
+      </div>
+      <div class="chat-area" id="chat-area"></div>
+      <div class="choice-area" id="choice-area"></div>
+    </div>
+    <div style="text-align:center;margin-top:24px;">
+      <button class="btn btn-teal" id="btn-to-page5" style="display:none">Lanjut ke Dampak →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== HALAMAN 5: DAMPAK ==================== -->
+<section id="page5">
+  <div class="page-container">
+    <div class="page-header">
+      <div class="badge">Halaman 4 dari 7</div>
+      <h2>Dampak Kekerasan</h2>
+      <p>Klik setiap kartu untuk melihat dampak yang ditimbulkan kekerasan.</p>
+    </div>
+
+    <div class="impact-grid" id="impact-grid"></div>
+
+    <div style="text-align:center;margin-top:32px;">
+      <button class="btn btn-primary" id="btn-to-page6">Pelajari Cara Mencegah →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== HALAMAN 6: CHECKLIST ==================== -->
+<section id="page6">
+  <div class="page-container">
+    <div class="page-header">
+      <div class="badge">Halaman 5 dari 7</div>
+      <h2>Cara Mencegah Kekerasan</h2>
+      <p>Centang setiap komitmen yang siap kamu jalankan. Centang semua untuk melanjutkan!</p>
+    </div>
+
+    <div class="checklist" id="checklist-items"></div>
+
+    <div style="text-align:center;margin-top:28px;">
+      <button class="btn btn-teal" id="btn-to-page7" style="display:none">Lanjut ke Cara Membantu Teman →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== HALAMAN 7: TEMAN BUTUH BANTUAN ==================== -->
+<section id="page7">
+  <div class="page-container">
+    <div class="page-header">
+      <div class="badge">Halaman 6 dari 7</div>
+      <h2>Saat Teman Butuh Bantuan</h2>
+      <p>Klik setiap kartu untuk melihat panduan lengkapnya.</p>
+    </div>
+
+    <div class="friend-grid">
+      <div class="friend-card dont" id="card-dont">
+        <h3>🚫 Jangan Dilakukan</h3>
+        <p class="friend-hint">Klik untuk melihat daftar ↓</p>
+        <div class="friend-list">
+          <ul>
+            <li>Meremehkan atau tidak percaya cerita korban</li>
+            <li>Menyalahkan korban atas apa yang terjadi</li>
+            <li>Menyebarkan cerita mereka tanpa izin</li>
+            <li>Memaksa mereka untuk segera "move on"</li>
+            <li>Menghadapi pelaku secara agresif sendiri</li>
+            <li>Berjanji merahasiakan jika itu membahayakan</li>
+          </ul>
+        </div>
+      </div>
+      <div class="friend-card do" id="card-do">
+        <h3>✅ Yang Harus Dilakukan</h3>
+        <p class="friend-hint">Klik untuk melihat daftar ↓</p>
+        <div class="friend-list">
+          <ul>
+            <li>Dengarkan dengan penuh perhatian tanpa menghakimi</li>
+            <li>Validasi perasaan mereka: "Itu pasti sangat berat."</li>
+            <li>Temani dan jangan biarkan mereka sendirian</li>
+            <li>Bantu laporkan ke guru BK atau orang tua</li>
+            <li>Ingatkan bahwa ini bukan kesalahan mereka</li>
+            <li>Tawarkan bantuan konkret sesuai kemampuanmu</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:32px;">
+      <button class="btn btn-primary" id="btn-to-page8">Menuju Penutup →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== HALAMAN 8: PENUTUP ==================== -->
+<section id="page8">
+  <div class="closing">
+    <div class="badge-animation">🏆</div>
+    <h2>Selamat! Kamu Telah Menjadi<br/><span>Agen Lingkungan Aman!</span></h2>
+    <p>Kamu telah menyelesaikan seluruh modul pembelajaran SAFE SPACE. Pengetahuan ini adalah senjata terpenting untuk menciptakan lingkungan yang aman dan bebas kekerasan.</p>
+
+    <div class="commitment-list">
+      <h4>Komitmenmu sebagai Agen Lingkungan Aman:</h4>
+      <ul>
+        <li>Mengenali berbagai bentuk kekerasan di sekitar</li>
+        <li>Berani bersuara dan melaporkan kekerasan</li>
+        <li>Menjadi pendengar aktif bagi teman yang membutuhkan</li>
+        <li>Menjaga perkataan dan tindakan agar tidak menyakiti</li>
+        <li>Menyebarkan kesadaran tentang lingkungan aman</li>
+      </ul>
+    </div>
+
+    <button class="btn btn-primary" id="btn-pledge" style="font-size:1rem;padding:16px 36px;">
+      🤝 Saya Siap Menjadi Agen Lingkungan Aman!
+    </button>
+
+    <p style="margin-top:24px;font-size:0.85rem;color:#94A3B8;">
+      💙 Jika kamu atau seseorang yang kamu kenal membutuhkan bantuan,<br/>
+      hubungi <strong>Hotline SAPA 129</strong> atau <strong>Into The Light Indonesia</strong>.
+    </p>
+
+    <p style="margin-top:24px;font-size:0.85rem;color:#94A3B8;">
+      Terima kasih sudah belajar bersama kami!
+    </p>
+
+     <p style="margin-top:24px;font-size:0.85rem;color:#94A3B8;">
+      Dibuat oleh: <strong>Neza suci mardia dan kawan-kawan</strong>
+  </p>
+  
+  </div>
+
+ 
+
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
