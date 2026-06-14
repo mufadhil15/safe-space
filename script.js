@@ -299,3 +299,85 @@ showPage(1);
 document.querySelectorAll('.nav-dot').forEach((dot, i) => {
   dot.addEventListener('click', () => showPage(i + 1));
 });
+
+// ---- AUDIO FEEDBACK SYSTEM (Web Audio API — no file needed) ----
+(function initAudio() {
+  let ctx = null;
+
+  // Lazy-init AudioContext on first user gesture (required by browsers)
+  function getCtx() {
+    if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
+    if (ctx.state === 'suspended') ctx.resume();
+    return ctx;
+  }
+
+  // Hover: lembut "tick" — sine wave pendek, frekuensi tinggi, volume kecil
+  function playHover() {
+    try {
+      const c = getCtx();
+      const osc = c.createOscillator();
+      const gain = c.createGain();
+      osc.connect(gain);
+      gain.connect(c.destination);
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(880, c.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(660, c.currentTime + 0.07);
+      gain.gain.setValueAtTime(0.08, c.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, c.currentTime + 0.1);
+      osc.start(c.currentTime);
+      osc.stop(c.currentTime + 0.1);
+    } catch (e) {}
+  }
+
+  // Click: tegas "pop" konfirmasi — dua nada naik cepat
+  function playClick() {
+    try {
+      const c = getCtx();
+      [0, 0.06].forEach((delay, i) => {
+        const osc = c.createOscillator();
+        const gain = c.createGain();
+        osc.connect(gain);
+        gain.connect(c.destination);
+        osc.type = 'triangle';
+        const freq = i === 0 ? 520 : 780;
+        osc.frequency.setValueAtTime(freq, c.currentTime + delay);
+        gain.gain.setValueAtTime(0.18, c.currentTime + delay);
+        gain.gain.exponentialRampToValueAtTime(0.0001, c.currentTime + delay + 0.12);
+        osc.start(c.currentTime + delay);
+        osc.stop(c.currentTime + delay + 0.12);
+      });
+    } catch (e) {}
+  }
+
+  // Selector semua varian kartu
+  const cardSelectors = [
+    '.flip-card-wrapper',
+    '.violence-card',
+    '.impact-card',
+    '.friend-card',
+    '.check-item',
+  ];
+
+  function attachAudio(el) {
+    if (el._audioAttached) return; // cegah duplikasi listener
+    el._audioAttached = true;
+    el.addEventListener('mouseenter', playHover);
+    el.addEventListener('click', playClick);
+  }
+
+  // Elemen statis yang sudah ada saat script berjalan
+  document.querySelectorAll(cardSelectors.join(',') + ', button').forEach(attachAudio);
+
+  // Elemen dinamis (dibuat oleh JS seperti .violence-card & .impact-card)
+  const observer = new MutationObserver(mutations => {
+    mutations.forEach(m => {
+      m.addedNodes.forEach(node => {
+        if (node.nodeType !== 1) return;
+        const isCard = cardSelectors.some(sel => node.matches && node.matches(sel));
+        if (isCard || node.matches('button')) attachAudio(node);
+        node.querySelectorAll(cardSelectors.join(',') + ', button').forEach(attachAudio);
+      });
+    });
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+})();
